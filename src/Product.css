@@ -1,0 +1,186 @@
+/* ================= ROOT ================= */
+.product-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  padding: 40px;
+  background: linear-gradient(180deg, #f7f8fc, #eef1f7);
+}
+
+/* ================= CARD ================= */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.18);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* ================= IMAGE ================= */
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  padding: 24px;
+  background: radial-gradient(circle at top, #ffffff, #f1f3f9);
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.06);
+}
+
+/* ================= CONTENT ================= */
+.content {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ================= TITLE ================= */
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.45;
+  height: 46px;
+  overflow: hidden;
+}
+
+/* ================= BRAND ================= */
+.brand {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ================= PRICE ================= */
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #020617;
+  margin-top: 6px;
+}
+
+/* ================= RATING ================= */
+.rating {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ================= BUTTON ================= */
+.add-btn {
+  margin-top: 14px;
+  padding: 14px 0;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #020617, #111827);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease;
+}
+
+.add-btn:hover {
+  background: linear-gradient(135deg, #000000, #020617);
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.add-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-disable {
+  background: #cbd5e1 !important;
+  color: #475569;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+.btn-disable:hover {
+  transform: none;
+  background: #cbd5e1 !important;
+}
+
+.remove-btn{
+  margin-top: 14px;
+  padding: 14px 0;
+  border-radius: 14px;
+  border: none;
+  background-color:red; 
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease;
+}
+
+
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .product-card {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .card img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+}
