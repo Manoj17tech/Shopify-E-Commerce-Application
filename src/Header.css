@@ -1,52 +1,120 @@
+/* ================= HEADER CONTAINER ================= */
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
-  background-color: #0f172a;
-  color: #fff;
+  padding: 14px 40px;
+  background: #0f172a;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 
-/* Logo */
+/* ================= LOGO ================= */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
 }
 
-/* Navigation */
+.logo h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ================= NAVIGATION ================= */
+
 .nav {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 30px;
 }
 
 .nav a {
   text-decoration: none;
-  color: #e5e7eb;
+  color: #e2e8f0;
+  font-size: 15px;
   font-weight: 500;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+/* underline hover animation */
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: #38bdf8;
+  transition: width 0.25s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
 }
 
 .nav a:hover {
   color: #38bdf8;
 }
 
-/* Cart */
+/* ================= CART ICON ================= */
+
 .cart {
   position: relative;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: 0.2s ease;
 }
+
+.cart:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ================= CART COUNT BADGE ================= */
 
 .cart-count {
   position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: #fff;
-  font-size: 12px;
-  padding: 2px 7px;
-  border-radius: 50%;
+  top: -6px;
+  right: -6px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 50px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    padding: 12px 20px;
+  }
+
+  .nav {
+    gap: 18px;
+  }
+
+  .logo h2 {
+    font-size: 18px;
+  }
+
 }
