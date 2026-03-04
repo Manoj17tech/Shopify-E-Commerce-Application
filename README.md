@@ -152,7 +152,7 @@ http://localhost:5173
 
 ---
 
-# 📸 Screenshots
+
 
 Example UI of the application:
 
