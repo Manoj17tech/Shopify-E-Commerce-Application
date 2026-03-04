@@ -4,16 +4,16 @@ import "./CartList.css";
 
 function CartList() {
   const cartSelector = useSelector((state) => state.cart.items);
-  console.log(cartSelector);
-
-  // total Price
-  const totalPrice = cartSelector.reduce(
-    (total, item) => total + item.price,
-    0,
-  );
-  console.log(totalPrice * 90.88);
+  // console.log(cartSelector);
 
   const [cartItems, setCartItems] = useState(cartSelector);
+  // total Price
+  const totalPrice = cartItems.reduce(
+    (total, item) =>
+      item.quantity ? total + item.price * item.quantity : total + item.price,
+    0,
+  );
+  // console.log(totalPrice * 90.88);
 
   const manageQuantity = (id, q) => {
     // console.log(id,q);
@@ -28,6 +28,9 @@ function CartList() {
           }
         : item;
     });
+    // console.log(cartTempItems[0]);
+
+    setCartItems(cartTempItems);
   };
 
   return (
@@ -38,13 +41,13 @@ function CartList() {
         </div>
 
         <div className="cart-top-actions">
-          <span className="items-count">{cartSelector.length} Items</span>
+          <span className="items-count">{cartItems.length} Items</span>
         </div>
 
         {/* Cart items list below */}
 
-        {cartSelector.length > 0
-          ? cartSelector.map((item) => (
+        {cartItems.length > 0
+          ? cartItems.map((item) => (
               <div className="cart-item" key={item.id}>
                 <div className="item-info">
                   <img src={item.thumbnail} />
@@ -59,11 +62,15 @@ function CartList() {
                     <input
                       type="number"
                       placeholder="enter the quantity"
+                      value={item.quantity || 1}
+                      min="1"
                       onChange={(e) => manageQuantity(item.id, e.target.value)}
                     />
                   </div>
                   <span className="price">
-                    {(item.price * 90.88).toFixed(1)}
+                    {item.quantity
+                      ? (item.price * item.quantity * 90.88).toFixed(2)
+                      : (item.price * 90.88).toFixed(2)}
                   </span>
                   <button className="Remove-btn">Remove</button>
                 </div>
