@@ -1,8 +1,3 @@
-Below is a **clean, professional `README.md`** you can directly use in your GitHub repository.
-
-It is written in a **GitHub-friendly format** with sections that recruiters expect to see.
-
----
 
 # 🛒 React Shopping Cart Application
 
