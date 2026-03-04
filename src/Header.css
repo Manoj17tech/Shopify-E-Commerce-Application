@@ -1,36 +1,35 @@
-/* ================= HEADER CONTAINER ================= */
+/* ================= HEADER ================= */
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 40px;
+  padding: 12px 40px;
   background: #0f172a;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-/* ================= LOGO ================= */
+/* ================= LOGO SECTION ================= */
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
+  gap: 12px;
 }
 
 .logo img {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: invert(1); /* makes dark icon visible on dark background */
 }
 
 .logo h2 {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 /* ================= NAVIGATION ================= */
@@ -43,78 +42,32 @@
 
 .nav a {
   text-decoration: none;
-  color: #e2e8f0;
+  color: #e5e7eb;
   font-size: 15px;
   font-weight: 500;
-  position: relative;
-  transition: 0.25s ease;
-}
-
-/* underline hover animation */
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background: #38bdf8;
-  transition: width 0.25s ease;
-}
-
-.nav a:hover::after {
-  width: 100%;
+  transition: color 0.25s ease;
 }
 
 .nav a:hover {
   color: #38bdf8;
 }
 
-/* ================= CART ICON ================= */
+/* ================= CART ================= */
 
 .cart {
   position: relative;
   cursor: pointer;
   padding: 6px;
-  border-radius: 6px;
-  transition: 0.2s ease;
 }
-
-.cart:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* ================= CART COUNT BADGE ================= */
 
 .cart-count {
   position: absolute;
   top: -6px;
-  right: -6px;
+  right: -8px;
   background: #ef4444;
-  color: white;
+  color: #fff;
   font-size: 11px;
   font-weight: 600;
   padding: 2px 6px;
-  border-radius: 50px;
-  min-width: 18px;
-  text-align: center;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-  .header {
-    padding: 12px 20px;
-  }
-
-  .nav {
-    gap: 18px;
-  }
-
-  .logo h2 {
-    font-size: 18px;
-  }
-
+  border-radius: 50%;
 }
