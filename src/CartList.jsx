@@ -1,19 +1,33 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./CartList.css";
+
+import { clearAllItem, removeItem } from "./redux/slice";
+import { useNavigate } from "react-router-dom";
 
 function CartList() {
   const cartSelector = useSelector((state) => state.cart.items);
   // console.log(cartSelector);
 
   const [cartItems, setCartItems] = useState(cartSelector);
+
+  // removing the Items from the Cart
+  useEffect(() => {
+    setCartItems(cartSelector);
+  }, [cartSelector]);
+
   // total Price
   const totalPrice = cartItems.reduce(
     (total, item) =>
       item.quantity ? total + item.price * item.quantity : total + item.price,
     0,
   );
-  // console.log(totalPrice * 90.88);
+
+  // dispatch Function to remove the item from the Cart
+  const dispatch = useDispatch();
+
+  // navigating
+  const navigate = useNavigate();
 
   const manageQuantity = (id, q) => {
     // console.log(id,q);
@@ -31,6 +45,18 @@ function CartList() {
     // console.log(cartTempItems[0]);
 
     setCartItems(cartTempItems);
+  };
+
+  // OrderPlacing Button Functionality
+  const placeOrderHandle = () => {
+    if (localStorage.length) {
+      localStorage.clear();
+      dispatch(clearAllItem());
+      alert("Order Placed");
+      navigate("/");
+    } else {
+      alert("No items in the Cart");
+    }
   };
 
   return (
@@ -72,7 +98,12 @@ function CartList() {
                       ? (item.price * item.quantity * 90.88).toFixed(2)
                       : (item.price * 90.88).toFixed(2)}
                   </span>
-                  <button className="Remove-btn">Remove</button>
+                  <button
+                    className="Remove-btn"
+                    onClick={() => dispatch(removeItem(item))}
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             ))
@@ -87,7 +118,9 @@ function CartList() {
           <span>Total</span>
           <span>₹{(totalPrice * 90.88).toFixed(2)}</span>
         </div>
-        <button className="checkout-btn">Proceed to Checkout</button>
+        <button className="checkout-btn" onClick={placeOrderHandle}>
+          Place Order
+        </button>
       </div>
     </>
   );

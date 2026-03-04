@@ -11,7 +11,7 @@ function Header() {
           src="https://cdn-icons-png.flaticon.com/512/263/263142.png"
           alt="Shop Logo"
         />
-        <h2>ShopEasy</h2>
+        <h2>Shopify</h2>
       </div>
 
       <nav className="nav">
