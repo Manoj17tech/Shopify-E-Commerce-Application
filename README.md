@@ -145,20 +145,6 @@ http://localhost:5173
 6️⃣ User updates quantity or removes items
 7️⃣ Total price updates dynamically
 
----
-
-
-
-Example UI of the application:
-
-Product Listing Page
-
-Cart Page
-
-*(Add screenshots here after uploading to GitHub)*
-
----
-
 # 🎯 Key Learning Outcomes
 
 This project demonstrates:
