@@ -106,13 +106,13 @@ src
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/react-shopping-cart.git
+git clone https://github.com/Manoj17tech/Shopify-E-Commerce-Application.git
 ```
 
 ### 2️⃣ Navigate to project folder
 
 ```bash
-cd react-shopping-cart
+cd redux
 ```
 
 ### 3️⃣ Install dependencies
