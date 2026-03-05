@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./CartList.css";
-
 import { clearAllItem, removeItem } from "./redux/slice";
 import { useNavigate } from "react-router-dom";
 
@@ -34,8 +33,8 @@ function CartList() {
 
     let quantity = parseInt(q) > 1 ? parseInt(q) : 1;
 
-    const cartTempItems = cartSelector.map((item) => {
-      return item.id == id
+    const cartTempItems = cartItems.map((item) => {
+      return item.id === id
         ? {
             ...item,
             quantity,
@@ -49,8 +48,8 @@ function CartList() {
 
   // OrderPlacing Button Functionality
   const placeOrderHandle = () => {
-    if (localStorage.length) {
-      localStorage.clear();
+    if (cartItems.length>0) {
+      cartItems.clear();
       dispatch(clearAllItem());
       alert("Order Placed");
       navigate("/");
